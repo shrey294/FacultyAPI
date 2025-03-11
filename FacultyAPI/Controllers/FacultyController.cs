@@ -144,6 +144,7 @@ namespace FacultyAPI.Controllers
 			try
 			{
 				var User = await _context.Users.ToListAsync();
+				//var User = await _context.Users.FromSqlRaw("selectuser").ToListAsync();
 				return Ok(User);
 			}
 			catch (Exception ex)
@@ -151,5 +152,19 @@ namespace FacultyAPI.Controllers
 				return BadRequest(ex.Message);
 			}
 		}
+		//[HttpGet]
+		//[Route("GetUserById/{id}")]
+		//public async Task<IActionResult> GetUserid(int id)
+		//{
+		//	try
+		//	{
+		//		var User =  _context.Users.FromSqlRaw($"getuserbyid {id}").AsEnumerable().FirstOrDefault();
+		//		return Ok(User);
+		//	}
+		//	catch (Exception ex)
+		//	{
+		//		return BadRequest(ex.Message);
+		//	}
+		//}
 	}
 }
